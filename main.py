@@ -39,7 +39,7 @@ class musicDownloader():
 
         sleep(3)
 
-        # go to first tab, if it opens a new one
+        # go to first tab if it opens a new one
         first_window = self.driver.window_handles[0]
         self.driver.switch_to.window(first_window)
 
@@ -60,3 +60,6 @@ for url in SONGS_LIST:
         # clear console, so it show only 1 time
         os.system('cls')
         print(MESSAGE)
+#
+#
+#
