@@ -4,11 +4,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from songs import SONGS_LIST
 
+import os
+
 
 class musicDownloader():
     def __init__(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        self.driver.get('https://ytmp3.cc/')
+        self.driver.get('https://ytmp2.cc/')
 
     def download(self, link):
         BASE_URL = 'https://www.youtube.com/watch?v='
@@ -19,7 +21,8 @@ class musicDownloader():
         url_input.send_keys(BASE_URL + link)
 
         # click convert button
-        convert_btn = self.driver.find_element_by_xpath('//*[@id="submit"]')
+        convert_btn = self.driver.find_element_by_xpath(
+            '//*[@id="submit"]')
         convert_btn.click()
 
         sleep(4)
@@ -45,4 +48,11 @@ class musicDownloader():
 music = musicDownloader()
 
 for url in SONGS_LIST:
-    music.download(url)
+    try:
+        music.download(url)
+    except:
+        MESSAGE = 'i\'m sorry, but website may be off...'
+
+        # clear console, so it show only 1 time
+        os.system('cls')
+        print(MESSAGE)
