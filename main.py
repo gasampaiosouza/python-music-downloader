@@ -14,17 +14,21 @@ class musicDownloader():
         BASE_URL = 'https://www.youtube.com/watch?v='
         self.link = link
 
+        # send URL to the input
         url_input = self.driver.find_element_by_xpath('//*[@id="input"]')
         url_input.send_keys(BASE_URL + link)
 
+        # click convert button
         convert_btn = self.driver.find_element_by_xpath('//*[@id="submit"]')
         convert_btn.click()
 
         sleep(4)
 
+        # click download button
         download_btn = self.driver.find_element_by_xpath(
             '//*[@id="buttons"]/a[1]')
 
+        # if download is slower than it should be
         while not download_btn:
             sleep(2)
 
@@ -32,12 +36,10 @@ class musicDownloader():
 
         sleep(3)
 
+        # click convert next, then restart it all
         next_btn = self.driver.find_element_by_xpath(
             '/html/body/div[2]/div[1]/div[1]/div[3]/a[3]')
         next_btn.click()
-
-    def close(self):
-        self.driver.close()
 
 
 music = musicDownloader()
