@@ -10,11 +10,14 @@ import os
 class musicDownloader():
     def __init__(self):
         self.driver = webdriver.Chrome(ChromeDriverManager().install())
-        self.driver.get('https://ytmp2.cc/')
+        self.driver.get('https://ytmp3.cc/')
 
     def download(self, link):
         BASE_URL = 'https://www.youtube.com/watch?v='
         self.link = link
+
+        window_name = self.driver.window_handles[0]
+        self.driver.switch_to.window(window_name)
 
         # send URL to the input
         url_input = self.driver.find_element_by_xpath('//*[@id="input"]')
@@ -51,7 +54,7 @@ for url in SONGS_LIST:
     try:
         music.download(url)
     except:
-        MESSAGE = 'i\'m sorry, but website may be off...'
+        MESSAGE = 'i\'m sorry, an error ocurred...'
 
         # clear console, so it show only 1 time
         os.system('cls')
