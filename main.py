@@ -16,9 +16,6 @@ class musicDownloader():
         BASE_URL = 'https://www.youtube.com/watch?v='
         self.link = link
 
-        window_name = self.driver.window_handles[0]
-        self.driver.switch_to.window(window_name)
-
         # send URL to the input
         url_input = self.driver.find_element_by_xpath('//*[@id="input"]')
         url_input.send_keys(BASE_URL + link)
@@ -41,6 +38,10 @@ class musicDownloader():
         download_btn.click()
 
         sleep(3)
+
+        # go to first tab, if it opens a new one
+        first_window = self.driver.window_handles[0]
+        self.driver.switch_to.window(first_window)
 
         # click convert next, then restart it all
         next_btn = self.driver.find_element_by_xpath(
