@@ -15,6 +15,7 @@ Hey! I made an music downloader with python ( for your lazy days... ).
   - [Examples](#examples)
     - [URL Example](#url-example)
     - [Code Examples](#code-examples)
+    - [How to Run](#how-to-run)
 - [Installation](#installation)
 - [Made With](#made-with)
 - [Thank You](#thank-you)
@@ -65,6 +66,10 @@ SONGS_LIST = ['8mCCMhuKEYw']
 
 # obs: there's no length limit.
 ```
+
+### How to Run
+
+To run, you can type `python main.py` in your terminal, or run it inside your favorite IDE.
 
 ## Installation
 
