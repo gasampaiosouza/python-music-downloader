@@ -40,19 +40,19 @@ cd python-music-downloader
 
 Inside `songs.py` you have a list called `SONGS_LIST`. That's where you're going to put all of your songs' URLs.
 
-> This list is valid only if **every** URL is **after** `yt.com/watch?v=`.
+> A valid URL is **everything after** `yt.com/watch?v=`.
 
 ### Examples
 
-### URL Example
+#### URL Example
 
 - **Full URL**: `https://www.youtube.com/watch?v=68ugkg9RePc`
 
 - **Valid URL**: `68ugkg9RePc`
 
-> this url regex if you need: `/\?v=(.*)/`
+> This url regex if you need: `/\?v=(.*)/`
 
-### Code Examples
+#### Code Examples
 
 ```python
 # valid list example
@@ -60,8 +60,8 @@ SONGS_LIST = ['8mCCMhuKEYw', 'PMivT7MJ41M', 'bnVUHWCynig']
 ```
 
 ```python
-# you can also download only one music, if you want to
-SONGS_LIST = ['8mCCMhuKEYw', 'PMivT7MJ41M', 'bnVUHWCynig']
+# you can also download only one music, if you want to, but it must always be an array.
+SONGS_LIST = ['8mCCMhuKEYw']
 
 # obs: there's no length limit.
 ```
