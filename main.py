@@ -10,13 +10,13 @@ import os
 
 class musicDownloader():
     def __init__(self):
-        option = Options()
-
-        option.add_experimental_option("prefs", {
+        options = Options()
+        options.add_experimental_option("prefs", {
             "profile.default_content_setting_values.notifications": 2
         })
+
         self.driver = webdriver.Chrome(
-            chrome_options=option, executable_path=ChromeDriverManager().install())
+            chrome_options=options, executable_path=ChromeDriverManager().install())
         self.driver.get('https://ytmp3.cc/')
 
     def download(self, link):
