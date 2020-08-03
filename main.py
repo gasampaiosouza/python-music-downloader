@@ -1,5 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 from time import sleep
 from songs import SONGS_LIST
@@ -9,7 +10,13 @@ import os
 
 class musicDownloader():
     def __init__(self):
-        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+        option = Options()
+
+        option.add_experimental_option("prefs", {
+            "profile.default_content_setting_values.notifications": 2
+        })
+        self.driver = webdriver.Chrome(
+            chrome_options=option, executable_path=ChromeDriverManager().install())
         self.driver.get('https://ytmp3.cc/')
 
     def download(self, link):
