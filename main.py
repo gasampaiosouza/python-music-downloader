@@ -16,8 +16,12 @@ class musicDownloader():
         })
 
         self.driver = webdriver.Chrome(
-            chrome_options=options, executable_path=ChromeDriverManager().install())
-        self.driver.get('https://ytmp3.cc/')
+            chrome_options=options,
+            executable_path=ChromeDriverManager().install()
+        )
+
+        URL = 'https://ytmp3.cc/'
+        self.driver.get(URL)
 
     def download(self, link):
         BASE_URL = 'https://www.youtube.com/watch?v='
@@ -28,15 +32,15 @@ class musicDownloader():
         url_input.send_keys(BASE_URL + link)
 
         # click convert button
-        convert_btn = self.driver.find_element_by_xpath(
-            '//*[@id="submit"]')
+        convert_btn = self.driver.find_element_by_xpath('//*[@id="submit"]')
         convert_btn.click()
 
         sleep(4)
 
         # click download button
         download_btn = self.driver.find_element_by_xpath(
-            '//*[@id="buttons"]/a[1]')
+            '//*[@id="buttons"]/a[1]'
+        )
 
         # if download is slower than it should be
         while not download_btn:
@@ -52,7 +56,8 @@ class musicDownloader():
 
         # click convert next, then restart it all
         next_btn = self.driver.find_element_by_xpath(
-            '/html/body/div[2]/div[1]/div[1]/div[3]/a[3]')
+            '/html/body/div[2]/div[1]/div[1]/div[3]/a[3]'
+        )
         next_btn.click()
 
 
@@ -64,7 +69,7 @@ for url in SONGS_LIST:
     except:
         MESSAGE = 'i\'m sorry, an error ocurred...'
 
-        # clear console, so it show only 1 time
+        # clear console, so it shows only 1 time
         os.system('cls')
         print(MESSAGE)
 #
